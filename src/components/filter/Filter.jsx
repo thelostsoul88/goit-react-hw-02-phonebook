@@ -1,14 +1,15 @@
 import { nanoid } from 'nanoid';
 import css from './Filter.module.css';
 
-const labelId = nanoid();
+const filterId = nanoid();
 const Filter = ({ handleFilter, state }) => {
   return (
     <div className={css.filterContainer}>
-      <label htmlFor={labelId} className={css.filterLabel}>
+      <label htmlFor={filterId} className={css.filterLabel}>
         Find contacts by name
       </label>
       <input
+        id={filterId}
         onChange={e => {
           handleFilter(e.currentTarget.value.trim());
         }}
@@ -16,6 +17,7 @@ const Filter = ({ handleFilter, state }) => {
         type="text"
         value={state.filter}
         className={css.filterInput}
+        autoComplete="off"
       />
     </div>
   );
